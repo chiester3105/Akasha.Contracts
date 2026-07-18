@@ -18,13 +18,13 @@ jobs:
                 dotnet-version: '8.x'
 
             - name: Restore dependencies
-              run: dotnet restore
+              run: dotnet restore Akasha.Contracts.csproj
 
             - name: Build
-              run: dotnet build -c Release --no-restore
+              run: dotnet build Akasha.Contracts.csproj -c Release --no-restore
 
             - name: Pack
-              run: dotnet pack -c Release --no-build -o ./nupkg
+              run: dotnet pack Akasha.Contracts.csproj -c Release --no-build -o ./nupkg
 
             - name: Push package
               run: |
