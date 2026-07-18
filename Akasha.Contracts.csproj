@@ -8,7 +8,7 @@
 	 <Authors>chiester3105</Authors>
 	 <Description>Shared Protobuf contracts for Akasha</Description>
 	 <PackageTags>nuclear-option;akasha;protobuf</PackageTags>
-	 <RepositoryUrl>https://github.com/chiester3105/akasha-contracts</RepositoryUrl>
+	 <RepositoryUrl>https://github.com/chiester3105/Akasha.Contracts</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
