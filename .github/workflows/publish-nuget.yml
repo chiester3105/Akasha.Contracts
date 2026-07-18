@@ -1,0 +1,33 @@
+name: Publish nuget
+
+on:
+    push:
+        tags:
+            - 'v*'
+jobs:
+    publish:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+            packages: write
+
+        steps:
+            - name: Checkout repository
+              uses: actions/setup-dotnet@v4
+              with:
+                dotnet-version: '8.x'
+
+            - name: Restore dependencies
+              run: dotnet restore
+
+            - name: Build
+              run: dotnet build -c Release --no-restore
+
+            - name: Pack
+              run: dotnet pack -c Release --no-build -o ./nupkg
+
+            - name: Push package
+              run: |
+                dotnet nuget push ./nupkg/*.nupkg \
+                --source https://nuget.pkg.github.com/${{github.repository_owner}}/index.json \
+                --api-key ${{secrets.GITHUB_TOKEN}}
